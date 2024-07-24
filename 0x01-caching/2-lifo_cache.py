@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Module for the LIFO cache task"""
+"""
+Module for the LIFO caching policy
+LIFO means Last In First Out
+"""
 from base_caching import BaseCaching
 
 

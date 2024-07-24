@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-"""Module for the FIFO cache task"""
+"""
+Module for the FIFO Caching policy
+FIFO means First In First Out
+"""
 from base_caching import BaseCaching
 
 
