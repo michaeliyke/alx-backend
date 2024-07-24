@@ -4,6 +4,7 @@ Module for LRU Caching plolicy
 LRU means Least Recently Used
 """
 from base_caching import BaseCaching
+from collections import OrderedDict
 
 
 class LRUCache(BaseCaching):
@@ -33,8 +34,3 @@ class LRUCache(BaseCaching):
             self.keys_queue.append(key)
             return self.cache_data[key]
         return None
-
-    def print_cache(self):
-        """Print the cache"""
-        for key in self.keys_queue:
-            print("{}: {}".format(key, self.cache_data[key]))
