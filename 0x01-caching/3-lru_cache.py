@@ -38,4 +38,3 @@ class LRUCache(BaseCaching):
         """Print the cache"""
         for key in self.keys_queue:
             print("{}: {}".format(key, self.cache_data[key]))
-        print()
