@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Internationlization (i18n) and localization (l10n) with Flask"""
+
 from flask import Flask, render_template
-from flask_babel import Babel, _  # type: ignore
+from flask_babel import Babel # type: ignore
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -19,7 +20,7 @@ app.config.from_object(Config)
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def index() -> str:
-    """GET / Return: 1-index.html"""
+    """Returns the index page for the app"""
     return render_template("1-index.html")
 
 
