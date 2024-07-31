@@ -4,7 +4,7 @@ Internationlization (i18n) and localization (l10n) with Flask
 """
 
 # import flask
-# from flask_babel import Babel # type: ignore
+from flask_babel import Babel # type: ignore
 
 # app = flask.Flask(__name__)
 # babel = Babel(app)
