@@ -2,10 +2,8 @@
 """Internationlization (i18n) and localization (l10n) with Flask"""
 
 from flask import Flask, render_template
-from flask_babel import Babel # type: ignore
 
 app = Flask(__name__)
-babel = Babel(app)
 
 
 
