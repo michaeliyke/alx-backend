@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Internationlization (i18n) and localization (l10n) with Flask"""
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, _
-from typing import List
+from flask_babel import Babel, _  # type: ignore
+from typing import List, Union, Optional
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -19,7 +19,7 @@ app.config.from_object(Config)
 
 
 @babel.localeselector
-def get_locale() -> str:
+def get_locale() -> Optional[str]:
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
@@ -28,8 +28,9 @@ def index() -> str:
     """GET /
     Return: 1-index.html
     """
-    return render_template("1-index.html")
+    return render_template("0-index.html")
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=6000)
+    app.run(host="localhost", port=5000, debug=True)
+    # command to run: python3 -m 0-app

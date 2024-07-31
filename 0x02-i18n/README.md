@@ -34,10 +34,16 @@ Internationlization (i18n) and localization (l10n) with Flask
 
 ### Setup
 
+- Install Flask
+
+```bash
+pip3 install Flask==2.0.1
+```
+
 - Install `Flask-Babel` in your `python3` environment
 
 ```bash
-pip3 install Flask-Babel
+pip3 install Flask-Babel==2.0.0
 ```
 
 ### Install Babel
@@ -45,7 +51,7 @@ pip3 install Flask-Babel
 - Install `Babel` in your `python3` environment
 
 ```bash
-pip3 install Babel
+pip3 install Babel==2.9.1
 ```
 
 ### Install pytz
@@ -53,7 +59,13 @@ pip3 install Babel
 - Install `pytz` in your `python3` environment
 
 ```bash
-pip3 install pytz
+pip3 install pytz==2022.1
+```
+
+- Install `Jinja2` in your `python3` environment
+
+```bash
+pip3 install Jinja2==3.1.1
 ```
 
 - Virtual environment
