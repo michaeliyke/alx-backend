@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Internationlization (i18n) and localization (l10n) with Flask"""
 
-from flask import Flask, render_template
+import flask
 from flask_babel import Babel # type: ignore
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 babel = Babel(app)
 
 
@@ -17,3 +17,13 @@ class Config:
 
 app.config.from_object(Config)
 
+
+@app.route("/", methods=["GET"], strict_slashes=False)
+def index() -> str:
+    """Returns the index page for the app"""
+    return flask.render_template("1-index.html")
+
+
+if __name__ == "__main__":
+    app.run(host="localhost", port=5000, debug=True)
+    # command to run: python3 -m 0-app
