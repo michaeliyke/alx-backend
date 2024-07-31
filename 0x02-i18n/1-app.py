@@ -18,18 +18,13 @@ class Config:
 app.config.from_object(Config)
 
 
-# @babel.localeselector
-# def get_locale() -> Optional[str]:
-#     """Get locale from request"""
-#     return request.accept_languages.best_match(app.config["LANGUAGES"])
-
 
 @app.route("/", methods=["GET"], strict_slashes=False)
 def index() -> str:
     """GET /
     Return: 1-index.html
     """
-    return render_template("0-index.html")
+    return render_template("1-index.html")
 
 
 if __name__ == "__main__":
