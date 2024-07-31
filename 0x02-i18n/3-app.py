@@ -31,8 +31,6 @@ def index() -> str:
     """
     return render_template(
         "1-index.html",
-        home_title=_("Welcome to Holberton"),
-        home_header=_("Hello World"),
     )
 
 

@@ -74,3 +74,12 @@ pip3 install Jinja2==3.1.1
 python3 -m venv venv
 source venv/bin/activate
 ```
+
+### Translation commands
+
+```bash
+pybabel extract -F babel.cfg -o messages.pot . --ignore=venv
+pybabel init -i messages.pot -d translations -l en
+pybabel init -i messages.pot -d translations -l fr
+pybabel compile -d translations
+```
