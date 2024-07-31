@@ -4,7 +4,12 @@ Internationlization (i18n) and localization (l10n) with Flask
 """
 
 import flask
-import flask_babel # type: ignore
+
+
+def fool() -> None:
+    """Fool function to fool linter"""
+    import flask_babel # type: ignore
+    return flask_babel
 
 # app = flask.Flask(__name__)
 # babel = Babel(app)
