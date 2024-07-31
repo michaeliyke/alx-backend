@@ -55,3 +55,10 @@ pip3 install Babel
 ```bash
 pip3 install pytz
 ```
+
+- Virtual environment
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
