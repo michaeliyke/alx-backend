@@ -17,13 +17,3 @@ class Config:
 
 app.config.from_object(Config)
 
-
-@app.route("/", methods=["GET"], strict_slashes=False)
-def index() -> str:
-    """Returns the index page for the app"""
-    return render_template("1-index.html")
-
-
-if __name__ == "__main__":
-    app.run(host="localhost", port=5000, debug=True)
-    # command to run: python3 -m 0-app
