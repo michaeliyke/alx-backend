@@ -88,7 +88,7 @@ def index() -> str:
     """GET /
     Return: 1-index.html
     """
-    return render_template("5-index.html", user=g.get("user", None))
+    return render_template("7-index.html", user=g.get("user", None))
 
 
 if __name__ == "__main__":
