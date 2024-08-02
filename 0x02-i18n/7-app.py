@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel, refresh, _  # type: ignore
 from typing import List, Union, Optional
 import logging
+import pytz
 
 
 class Config:
@@ -38,11 +39,48 @@ def before_request():
 @babel.localeselector
 def get_locale() -> Optional[str]:
     """Get locale from request"""
-    locale = request.args.get("locale", None)
+    # Locale from URL parameters
 
+    locale = request.args.get("locale", None)
     if locale and locale in app.config["LANGUAGES"]:
         return locale
-    return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+    # Locale from user settings
+    if g.user and g.user.get("locale") in app.config["LANGUAGES"]:
+        return g.user.get("locale")
+
+    # Locale from request header
+    header_locale = request.headers.get("Accept-Language")
+    if header_locale:
+        header_locales = header_locale.replace(" ", "").split(",")
+        for locale in header_locales:
+            if locale in app.config["LANGUAGES"]:
+                return locale
+
+    # Default locale
+    return app.config["BABEL_DEFAULT_LOCALE"]
+
+
+@babel.timezoneselector
+def get_timezone() -> Optional[str]:
+    """Get time zone from request"""
+    # Time zone from URL parameters
+    timezone = request.args.get("timezone", None)
+    if timezone:
+        try:
+            pytz.timezone(timezone)
+            return timezone
+        except pytz.exceptions.UnknownTimeZoneError:
+            pass
+    # Time zone from user settings
+    if g.user and g.user.get("timezone"):
+        try:
+            pytz.timezone(g.user.get("timezone"))
+            return g.user.get("timezone")
+        except pytz.exceptions.UnknownTimeZoneError:
+            pass
+    # Default time zone
+    return app.config["BABEL_DEFAULT_TIMEZONE"]
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
