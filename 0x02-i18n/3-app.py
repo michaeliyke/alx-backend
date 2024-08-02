@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Internationlization (i18n) and localization (l10n) with Flask"""
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, _  # type: ignore
+from flask_babel import Babel, refresh, _  # type: ignore
 from typing import List, Union, Optional
 
+refresh()
 app = Flask(__name__)
 babel = Babel(app)
 
@@ -30,7 +31,7 @@ def index() -> str:
     Return: 1-index.html
     """
     return render_template(
-        "1-index.html",
+        "3-index.html",
     )
 
 

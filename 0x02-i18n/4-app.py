@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 """Internationlization (i18n) and localization (l10n) with Flask"""
 from flask import Flask, render_template, request, g
-from flask_babel import Babel, _  # type: ignore
+from flask_babel import Babel, refresh, _  # type: ignore
 from typing import List, Union, Optional
 import logging
-
-app = Flask(__name__)
-babel = Babel(app)
 
 
 class Config:
@@ -16,6 +13,8 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
+app = Flask(__name__)
+babel = Babel(app)
 app.config.from_object(Config)
 
 
@@ -23,7 +22,6 @@ app.config.from_object(Config)
 def get_locale() -> Optional[str]:
     """Get locale from request"""
     locale = request.args.get("locale", None)
-    logging.debug(f"Locale from request: {locale}")
 
     if locale and locale in app.config["LANGUAGES"]:
         return locale
@@ -36,7 +34,7 @@ def index() -> str:
     Return: 1-index.html
     """
     return render_template(
-        "1-index.html",
+        "4-index.html",
     )
 
 

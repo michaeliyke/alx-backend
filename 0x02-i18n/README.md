@@ -78,8 +78,14 @@ source venv/bin/activate
 ### Translation commands
 
 ```bash
-pybabel extract -F babel.cfg -o messages.pot . --ignore=venv
-pybabel init -i messages.pot -d translations -l en
-pybabel init -i messages.pot -d translations -l fr
+# Initial setup
+pybabel extract -F babel.cfg -o messages.pot . --ignore=venv # Can both init and update
+pybabel init -i messages.pot -d translations -l en # Only inits
+pybabel init -i messages.pot -d translations -l fr # Only inits
+pybabel compile -d translations
+
+# Updating
+pybabel extract -F babel.cfg -o messages.pot . --ignore=venv # Can both init and update
+pybabel update -i messages.pot -d translations # Update the translation files
 pybabel compile -d translations
 ```
